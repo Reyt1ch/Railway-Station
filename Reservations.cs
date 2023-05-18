@@ -1,4 +1,6 @@
-﻿using System;
+﻿using RailwayStation.Data;
+using RailwayStation.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,11 +12,18 @@ using System.Windows.Forms;
 
 namespace RailwayStation
 {
-    public partial class Form1 : Form
+    public partial class Reservations : Form
     {
-        public Form1()
+        DataService service;
+        Destination toUpdate;
+        public Reservations()
         {
             InitializeComponent();
+        }
+
+        private void Reservations_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

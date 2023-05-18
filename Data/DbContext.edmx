@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RailwayStationDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CancelledRace">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timetable" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="className" Type="varchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Day">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Race">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="destination" Type="int" Nullable="false" />
+          <Property Name="numberOfSeatsClass1" Type="int" Nullable="false" />
+          <Property Name="numberOfSeatsClass2" Type="int" Nullable="false" />
+          <Property Name="numberOfSeatsClass3" Type="int" Nullable="false" />
+          <Property Name="priceClass1" Type="float" Nullable="false" />
+          <Property Name="priceClass2" Type="float" Nullable="false" />
+          <Property Name="priceClass3" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="timetable" Type="int" Nullable="false" />
+          <Property Name="class" Type="int" Nullable="false" />
+          <Property Name="numberOfSeats" Type="int" />
+        </EntityType>
+        <EntityType Name="Timetable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="race" Type="int" Nullable="false" />
+          <Property Name="departingDay" Type="int" Nullable="false" />
+          <Property Name="departingTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="arrivalDay" Type="int" Nullable="false" />
+          <Property Name="arrivalTime" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Cancelled__timet__38996AB5">
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
+          <End Role="CancelledRace" Type="Self.CancelledRace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timetable">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CancelledRace">
+              <PropertyRef Name="timetable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Race__destinatio__276EDEB3">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+          <End Role="Race" Type="Self.Race" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Race">
+              <PropertyRef Name="destination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__class__35BCFE0A">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="class" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__timet__34C8D9D1">
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timetable">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="timetable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Timetable__arriv__2F10007B">
+          <End Role="Day" Type="Self.Day" Multiplicity="1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="arrivalDay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Timetable__depar__2E1BDC42">
+          <End Role="Day" Type="Self.Day" Multiplicity="1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="departingDay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Timetable__race__2D27B809">
+          <End Role="Race" Type="Self.Race" Multiplicity="1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Race">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="race" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RailwayStationDBModelStoreContainer">
+          <EntitySet Name="CancelledRace" EntityType="Self.CancelledRace" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Class" EntityType="Self.Class" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Day" EntityType="Self.Day" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Destination" EntityType="Self.Destination" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Race" EntityType="Self.Race" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reservation" EntityType="Self.Reservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Timetable" EntityType="Self.Timetable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Cancelled__timet__38996AB5" Association="Self.FK__Cancelled__timet__38996AB5">
+            <End Role="Timetable" EntitySet="Timetable" />
+            <End Role="CancelledRace" EntitySet="CancelledRace" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Race__destinatio__276EDEB3" Association="Self.FK__Race__destinatio__276EDEB3">
+            <End Role="Destination" EntitySet="Destination" />
+            <End Role="Race" EntitySet="Race" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__class__35BCFE0A" Association="Self.FK__Reservati__class__35BCFE0A">
+            <End Role="Class" EntitySet="Class" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__timet__34C8D9D1" Association="Self.FK__Reservati__timet__34C8D9D1">
+            <End Role="Timetable" EntitySet="Timetable" />
+            <End Role="Reservation" EntitySet="Reservation" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Timetable__arriv__2F10007B" Association="Self.FK__Timetable__arriv__2F10007B">
+            <End Role="Day" EntitySet="Day" />
+            <End Role="Timetable" EntitySet="Timetable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Timetable__depar__2E1BDC42" Association="Self.FK__Timetable__depar__2E1BDC42">
+            <End Role="Day" EntitySet="Day" />
+            <End Role="Timetable" EntitySet="Timetable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Timetable__race__2D27B809" Association="Self.FK__Timetable__race__2D27B809">
+            <End Role="Race" EntitySet="Race" />
+            <End Role="Timetable" EntitySet="Timetable" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RailwayStationDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CancelledRace">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timetable" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Timetable1" Relationship="Self.FK__Cancelled__timet__38996AB5" FromRole="CancelledRace" ToRole="Timetable" />
+        </EntityType>
+        <EntityType Name="Class">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="className" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__class__35BCFE0A" FromRole="Class" ToRole="Reservation" />
+        </EntityType>
+        <EntityType Name="Day">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Timetables" Relationship="Self.FK__Timetable__arriv__2F10007B" FromRole="Day" ToRole="Timetable" />
+          <NavigationProperty Name="Timetables1" Relationship="Self.FK__Timetable__depar__2E1BDC42" FromRole="Day" ToRole="Timetable" />
+        </EntityType>
+        <EntityType Name="Destination">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Races" Relationship="Self.FK__Race__destinatio__276EDEB3" FromRole="Destination" ToRole="Race" />
+        </EntityType>
+        <EntityType Name="Race">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="destination" Type="Int32" Nullable="false" />
+          <Property Name="numberOfSeatsClass1" Type="Int32" Nullable="false" />
+          <Property Name="numberOfSeatsClass2" Type="Int32" Nullable="false" />
+          <Property Name="numberOfSeatsClass3" Type="Int32" Nullable="false" />
+          <Property Name="priceClass1" Type="Double" Nullable="false" />
+          <Property Name="priceClass2" Type="Double" Nullable="false" />
+          <Property Name="priceClass3" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Destination1" Relationship="Self.FK__Race__destinatio__276EDEB3" FromRole="Race" ToRole="Destination" />
+          <NavigationProperty Name="Timetables" Relationship="Self.FK__Timetable__race__2D27B809" FromRole="Race" ToRole="Timetable" />
+        </EntityType>
+        <EntityType Name="Reservation">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="timetable" Type="Int32" Nullable="false" />
+          <Property Name="class" Type="Int32" Nullable="false" />
+          <Property Name="numberOfSeats" Type="Int32" />
+          <NavigationProperty Name="Class1" Relationship="Self.FK__Reservati__class__35BCFE0A" FromRole="Reservation" ToRole="Class" />
+          <NavigationProperty Name="Timetable1" Relationship="Self.FK__Reservati__timet__34C8D9D1" FromRole="Reservation" ToRole="Timetable" />
+        </EntityType>
+        <EntityType Name="Timetable">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="race" Type="Int32" Nullable="false" />
+          <Property Name="departingDay" Type="Int32" Nullable="false" />
+          <Property Name="departingTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="arrivalDay" Type="Int32" Nullable="false" />
+          <Property Name="arrivalTime" Type="Time" Nullable="false" Precision="7" />
+          <NavigationProperty Name="CancelledRaces" Relationship="Self.FK__Cancelled__timet__38996AB5" FromRole="Timetable" ToRole="CancelledRace" />
+          <NavigationProperty Name="Day" Relationship="Self.FK__Timetable__arriv__2F10007B" FromRole="Timetable" ToRole="Day" />
+          <NavigationProperty Name="Day1" Relationship="Self.FK__Timetable__depar__2E1BDC42" FromRole="Timetable" ToRole="Day" />
+          <NavigationProperty Name="Race1" Relationship="Self.FK__Timetable__race__2D27B809" FromRole="Timetable" ToRole="Race" />
+          <NavigationProperty Name="Reservations" Relationship="Self.FK__Reservati__timet__34C8D9D1" FromRole="Timetable" ToRole="Reservation" />
+        </EntityType>
+        <Association Name="FK__Cancelled__timet__38996AB5">
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
+          <End Role="CancelledRace" Type="Self.CancelledRace" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timetable">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CancelledRace">
+              <PropertyRef Name="timetable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__class__35BCFE0A">
+          <End Role="Class" Type="Self.Class" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Class">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="class" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Timetable__arriv__2F10007B">
+          <End Role="Day" Type="Self.Day" Multiplicity="1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="arrivalDay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Timetable__depar__2E1BDC42">
+          <End Role="Day" Type="Self.Day" Multiplicity="1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Day">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="departingDay" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Race__destinatio__276EDEB3">
+          <End Role="Destination" Type="Self.Destination" Multiplicity="1" />
+          <End Role="Race" Type="Self.Race" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Destination">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Race">
+              <PropertyRef Name="destination" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Timetable__race__2D27B809">
+          <End Role="Race" Type="Self.Race" Multiplicity="1" />
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Race">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Timetable">
+              <PropertyRef Name="race" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Reservati__timet__34C8D9D1">
+          <End Role="Timetable" Type="Self.Timetable" Multiplicity="1" />
+          <End Role="Reservation" Type="Self.Reservation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Timetable">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Reservation">
+              <PropertyRef Name="timetable" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DbRepository" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CancelledRaces" EntityType="Self.CancelledRace" />
+          <EntitySet Name="Classes" EntityType="Self.Class" />
+          <EntitySet Name="Days" EntityType="Self.Day" />
+          <EntitySet Name="Destinations" EntityType="Self.Destination" />
+          <EntitySet Name="Races" EntityType="Self.Race" />
+          <EntitySet Name="Reservations" EntityType="Self.Reservation" />
+          <EntitySet Name="Timetables" EntityType="Self.Timetable" />
+          <AssociationSet Name="FK__Cancelled__timet__38996AB5" Association="Self.FK__Cancelled__timet__38996AB5">
+            <End Role="Timetable" EntitySet="Timetables" />
+            <End Role="CancelledRace" EntitySet="CancelledRaces" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__class__35BCFE0A" Association="Self.FK__Reservati__class__35BCFE0A">
+            <End Role="Class" EntitySet="Classes" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Timetable__arriv__2F10007B" Association="Self.FK__Timetable__arriv__2F10007B">
+            <End Role="Day" EntitySet="Days" />
+            <End Role="Timetable" EntitySet="Timetables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Timetable__depar__2E1BDC42" Association="Self.FK__Timetable__depar__2E1BDC42">
+            <End Role="Day" EntitySet="Days" />
+            <End Role="Timetable" EntitySet="Timetables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Race__destinatio__276EDEB3" Association="Self.FK__Race__destinatio__276EDEB3">
+            <End Role="Destination" EntitySet="Destinations" />
+            <End Role="Race" EntitySet="Races" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Timetable__race__2D27B809" Association="Self.FK__Timetable__race__2D27B809">
+            <End Role="Race" EntitySet="Races" />
+            <End Role="Timetable" EntitySet="Timetables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Reservati__timet__34C8D9D1" Association="Self.FK__Reservati__timet__34C8D9D1">
+            <End Role="Timetable" EntitySet="Timetables" />
+            <End Role="Reservation" EntitySet="Reservations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RailwayStationDBModelStoreContainer" CdmEntityContainer="DbRepository">
+          <EntitySetMapping Name="CancelledRaces">
+            <EntityTypeMapping TypeName="RailwayStationDBModel.CancelledRace">
+              <MappingFragment StoreEntitySet="CancelledRace">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="timetable" ColumnName="timetable" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="RailwayStationDBModel.Class">
+              <MappingFragment StoreEntitySet="Class">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="className" ColumnName="className" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Days">
+            <EntityTypeMapping TypeName="RailwayStationDBModel.Day">
+              <MappingFragment StoreEntitySet="Day">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="code" ColumnName="code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Destinations">
+            <EntityTypeMapping TypeName="RailwayStationDBModel.Destination">
+              <MappingFragment StoreEntitySet="Destination">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Races">
+            <EntityTypeMapping TypeName="RailwayStationDBModel.Race">
+              <MappingFragment StoreEntitySet="Race">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="destination" ColumnName="destination" />
+                <ScalarProperty Name="numberOfSeatsClass1" ColumnName="numberOfSeatsClass1" />
+                <ScalarProperty Name="numberOfSeatsClass2" ColumnName="numberOfSeatsClass2" />
+                <ScalarProperty Name="numberOfSeatsClass3" ColumnName="numberOfSeatsClass3" />
+                <ScalarProperty Name="priceClass1" ColumnName="priceClass1" />
+                <ScalarProperty Name="priceClass2" ColumnName="priceClass2" />
+                <ScalarProperty Name="priceClass3" ColumnName="priceClass3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reservations">
+            <EntityTypeMapping TypeName="RailwayStationDBModel.Reservation">
+              <MappingFragment StoreEntitySet="Reservation">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="timetable" ColumnName="timetable" />
+                <ScalarProperty Name="class" ColumnName="class" />
+                <ScalarProperty Name="numberOfSeats" ColumnName="numberOfSeats" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Timetables">
+            <EntityTypeMapping TypeName="RailwayStationDBModel.Timetable">
+              <MappingFragment StoreEntitySet="Timetable">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="race" ColumnName="race" />
+                <ScalarProperty Name="departingDay" ColumnName="departingDay" />
+                <ScalarProperty Name="departingTime" ColumnName="departingTime" />
+                <ScalarProperty Name="arrivalDay" ColumnName="arrivalDay" />
+                <ScalarProperty Name="arrivalTime" ColumnName="arrivalTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
