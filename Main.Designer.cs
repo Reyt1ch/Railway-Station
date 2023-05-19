@@ -32,6 +32,7 @@
             this.racesButton = new System.Windows.Forms.Button();
             this.timetablesButton = new System.Windows.Forms.Button();
             this.reservationsButton = new System.Windows.Forms.Button();
+            this.tasksButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // destinationsButton
@@ -74,11 +75,22 @@
             this.reservationsButton.UseVisualStyleBackColor = true;
             this.reservationsButton.Click += new System.EventHandler(this.reservationsButton_Click);
             // 
+            // tasksButton
+            // 
+            this.tasksButton.Location = new System.Drawing.Point(277, 310);
+            this.tasksButton.Name = "tasksButton";
+            this.tasksButton.Size = new System.Drawing.Size(137, 53);
+            this.tasksButton.TabIndex = 4;
+            this.tasksButton.Text = "Tasks";
+            this.tasksButton.UseVisualStyleBackColor = true;
+            this.tasksButton.Click += new System.EventHandler(this.tasksButton_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tasksButton);
             this.Controls.Add(this.reservationsButton);
             this.Controls.Add(this.timetablesButton);
             this.Controls.Add(this.racesButton);
@@ -96,6 +108,7 @@
         private System.Windows.Forms.Button racesButton;
         private System.Windows.Forms.Button timetablesButton;
         private System.Windows.Forms.Button reservationsButton;
+        private System.Windows.Forms.Button tasksButton;
     }
 }
 
