@@ -51,26 +51,14 @@ namespace RailwayStation
         {
             updateTimetable.Hide();
             showTimetables();
-            raceComboBox.Items.Clear();
-            departingDayComboBox.Items.Clear();
-            arrivalDayComboBox.Items.Clear();
-
-            foreach (Race race in service.GetAllRaces())
-            {
-                raceComboBox.Items.Add(race.id);
-            }
-
-            foreach (Day day in service.GetAllDays())
-            {
-                arrivalDayComboBox.Items.Add(day.code);
-                departingDayComboBox.Items.Add(day.code);
-            }
         }
 
         private void showTimetables()
         {
             timetablesDataGridView.Columns.Clear();
             var data = (from t in service.GetAllTimetables()
+                        where !(from c in service.GetAllCancelledRaces()
+                                select c.timetable).Contains(t.id)
                         select new
                         {
                             ID = t.id,
@@ -95,6 +83,34 @@ namespace RailwayStation
                 HeaderText = "Delete",
                 Name = "delete"
             });
+
+            raceComboBox.Items.Clear();
+            departingDayComboBox.Items.Clear();
+            arrivalDayComboBox.Items.Clear();
+            cancelComboBox.Items.Clear();
+            enableComboBox.Items.Clear();
+
+            foreach (Race race in service.GetAllRaces())
+            {
+                raceComboBox.Items.Add(race.id);
+            }
+
+            foreach (Day day in service.GetAllDays())
+            {
+                arrivalDayComboBox.Items.Add(day.code);
+                departingDayComboBox.Items.Add(day.code);
+            }
+
+            foreach (Timetable timetable in service.GetAllTimetables())
+            {
+                cancelComboBox.Items.Add(timetable.id);
+            }
+
+            foreach (CancelledRace cancelledRace in service.GetAllCancelledRaces())
+            {
+                enableComboBox.Items.Add(cancelledRace.timetable);
+            }
+
         }
 
         private void addTimetable_Click(object sender, EventArgs e)
@@ -143,6 +159,38 @@ namespace RailwayStation
             arrivalDayComboBox.Text = "";
             departingTimeTextBox.Text = "";
             arrivalTimeTextBox.Text = "";
+            showTimetables();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            CancelledRace cancelledRace = new CancelledRace()
+            {
+                timetable = Convert.ToInt32(cancelComboBox.Text)
+            };
+
+            try
+            {
+                service.AddCancelledRace(cancelledRace);
+            }
+
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            showTimetables();
+        }
+
+        private void enableButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                service.DeleteCancelledRace(service.FindCancelledRaceeByTimetable(Convert.ToInt32(enableComboBox.Text)).id);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             showTimetables();
         }
     }

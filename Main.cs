@@ -16,6 +16,7 @@ namespace RailwayStation
         Destinations destinations;
         Races races;
         Timetables timetables;
+        Reservations reservations;
 
         public Main()
         {
@@ -27,6 +28,7 @@ namespace RailwayStation
             destinations = new Destinations();
             races = new Races();
             timetables = new Timetables();
+            reservations = new Reservations();
         }
 
         private void destinationsButton_Click(object sender, EventArgs e)
@@ -47,6 +49,13 @@ namespace RailwayStation
         {
             this.Hide();
             timetables.ShowDialog();
+            this.Show();
+        }
+
+        private void reservationsButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            reservations.ShowDialog();
             this.Show();
         }
     }

@@ -177,6 +177,11 @@ namespace RailwayStation.Service
             }
         }
 
+        public Timetable FindTimetableById(int id)
+        {
+            return db.Timetables.FirstOrDefault(t => t.id == id);
+        }
+
         // Class CRUD operations
 
         public List<Class> GetAllClasses()
@@ -188,9 +193,7 @@ namespace RailwayStation.Service
 
         public List<Reservation> GetAllReservations()
         {
-            return db.Reservations.Include(r => r.timetable)
-                .Include(r => r.Class1)
-                .ToList();
+            return db.Reservations.ToList();
         }
 
         public void AddReservation(Reservation reservation)
@@ -205,11 +208,21 @@ namespace RailwayStation.Service
             db.SaveChanges();
         }
 
+        public void DeleteReservation(int reservationId)
+        {
+            var reservation = db.Reservations.Find(reservationId);
+            if (reservation != null)
+            {
+                db.Reservations.Remove(reservation);
+                db.SaveChanges();
+            }
+        }
+
         // CancelledRace CRUD operations
 
         public List<CancelledRace> GetAllCancelledRaces()
         {
-            return db.CancelledRaces.Include(c => c.timetable).ToList();
+            return db.CancelledRaces.ToList();
         }
 
         public void AddCancelledRace(CancelledRace cancelledRace)
@@ -224,6 +237,20 @@ namespace RailwayStation.Service
             db.SaveChanges();
         }
 
+        public void DeleteCancelledRace(int cancelledRaceId)
+        {
+            var cancelledRace = db.CancelledRaces.Find(cancelledRaceId);
+            if (cancelledRace != null)
+            {
+                db.CancelledRaces.Remove(cancelledRace);
+                db.SaveChanges();
+            }
+        }
+
+        public CancelledRace FindCancelledRaceeByTimetable(int timetable)
+        {
+            return db.CancelledRaces.FirstOrDefault(t => t.timetable == timetable);
+        }
         // Dispose of the DbContext when you're done using it
 
         public void Dispose()
