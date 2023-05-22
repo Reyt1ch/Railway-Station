@@ -245,6 +245,7 @@
       <DependentUpon>DbContext.edmx</DependentUpon>
       <LastGenOutput>DbContext.cs</LastGenOutput>
     </Content>
+    <Content Include="Queries\database.sql" />
     <None Include="Resources\buy.png" />
     <None Include="Resources\delete.png" />
     <None Include="Resources\update.png" />
