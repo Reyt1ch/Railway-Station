@@ -39,18 +39,20 @@
             // destinationsDataGridView
             // 
             this.destinationsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.destinationsDataGridView.Location = new System.Drawing.Point(313, 12);
+            this.destinationsDataGridView.Location = new System.Drawing.Point(235, 10);
+            this.destinationsDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.destinationsDataGridView.Name = "destinationsDataGridView";
             this.destinationsDataGridView.RowHeadersWidth = 51;
             this.destinationsDataGridView.RowTemplate.Height = 24;
-            this.destinationsDataGridView.Size = new System.Drawing.Size(475, 426);
+            this.destinationsDataGridView.Size = new System.Drawing.Size(356, 346);
             this.destinationsDataGridView.TabIndex = 0;
             // 
             // addDestination
             // 
-            this.addDestination.Location = new System.Drawing.Point(132, 118);
+            this.addDestination.Location = new System.Drawing.Point(99, 96);
+            this.addDestination.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.addDestination.Name = "addDestination";
-            this.addDestination.Size = new System.Drawing.Size(150, 31);
+            this.addDestination.Size = new System.Drawing.Size(112, 25);
             this.addDestination.TabIndex = 1;
             this.addDestination.Text = "Add Destination";
             this.addDestination.UseVisualStyleBackColor = true;
@@ -58,42 +60,51 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(30, 90);
+            this.nameTextBox.Location = new System.Drawing.Point(22, 73);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(252, 22);
+            this.nameTextBox.Size = new System.Drawing.Size(190, 20);
             this.nameTextBox.TabIndex = 2;
             // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(27, 71);
+            this.nameLabel.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold);
+            this.nameLabel.Location = new System.Drawing.Point(19, 55);
+            this.nameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(47, 16);
+            this.nameLabel.Size = new System.Drawing.Size(74, 16);
             this.nameLabel.TabIndex = 3;
-            this.nameLabel.Text = "Name:";
+            this.nameLabel.Text = "Denumirea:";
             // 
             // updateDestination
             // 
-            this.updateDestination.Location = new System.Drawing.Point(132, 118);
+            this.updateDestination.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.updateDestination.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold);
+            this.updateDestination.Location = new System.Drawing.Point(99, 96);
+            this.updateDestination.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.updateDestination.Name = "updateDestination";
-            this.updateDestination.Size = new System.Drawing.Size(150, 31);
+            this.updateDestination.Size = new System.Drawing.Size(113, 34);
             this.updateDestination.TabIndex = 4;
-            this.updateDestination.Text = "Update Destination";
-            this.updateDestination.UseVisualStyleBackColor = true;
+            this.updateDestination.Text = "Actualizează";
+            this.updateDestination.UseVisualStyleBackColor = false;
             this.updateDestination.Click += new System.EventHandler(this.updateDestination_Click);
             // 
             // Destinations
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(600, 366);
             this.Controls.Add(this.updateDestination);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.addDestination);
             this.Controls.Add(this.destinationsDataGridView);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Destinations";
-            this.Text = "Destinations";
+            this.Text = "Destinații";
             this.Load += new System.EventHandler(this.Destinations_Load);
             ((System.ComponentModel.ISupportInitialize)(this.destinationsDataGridView)).EndInit();
             this.ResumeLayout(false);
