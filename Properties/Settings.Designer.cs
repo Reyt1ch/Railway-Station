@@ -26,8 +26,8 @@ namespace RailwayStation.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-EHAVNP2;Initial Catalog=RailwayStationDB;Integrated Security=" +
-            "True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=L36_PC07\\SQLEXPRESS;Initial Catalog=RailwayStationDB;Integrated Secur" +
+            "ity=True")]
         public string RailwayStationDBConnectionString {
             get {
                 return ((string)(this["RailwayStationDBConnectionString"]));

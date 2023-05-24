@@ -38,7 +38,7 @@ namespace RailwayStation
 
             if (e.ColumnIndex == 2)
             {
-                service.DeleteTimetable(service.FindDestinationByName(destinationsDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()).id);
+                service.DeleteDestination(service.FindDestinationByName(destinationsDataGridView.Rows[e.RowIndex].Cells[0].Value.ToString()).id);
                 showDestinations();
             }
         }
