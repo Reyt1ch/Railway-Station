@@ -18,6 +18,7 @@ namespace RailwayStation
         Timetables timetables;
         Reservations reservations;
         Tasks tasks;
+        Log_In login;
 
         public Main()
         {
@@ -31,6 +32,8 @@ namespace RailwayStation
             timetables = new Timetables();
             reservations = new Reservations();
             tasks = new Tasks();
+            login= new Log_In();
+            login.ShowDialog();
         }
 
         private void destinationsButton_Click(object sender, EventArgs e)
@@ -65,6 +68,13 @@ namespace RailwayStation
         {
             this.Hide();
             tasks.ShowDialog();
+            this.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            login.ShowDialog();
             this.Show();
         }
     }

@@ -53,7 +53,7 @@
             // 
             this.racesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.racesDataGridView.Location = new System.Drawing.Point(235, 10);
-            this.racesDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.racesDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.racesDataGridView.Name = "racesDataGridView";
             this.racesDataGridView.RowHeadersWidth = 51;
             this.racesDataGridView.RowTemplate.Height = 24;
@@ -74,7 +74,7 @@
             // destinationTextBox
             // 
             this.destinationTextBox.Location = new System.Drawing.Point(11, 84);
-            this.destinationTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.destinationTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.destinationTextBox.Name = "destinationTextBox";
             this.destinationTextBox.Size = new System.Drawing.Size(187, 20);
             this.destinationTextBox.TabIndex = 3;
@@ -82,7 +82,7 @@
             // class1SeatsTextBox
             // 
             this.class1SeatsTextBox.Location = new System.Drawing.Point(11, 138);
-            this.class1SeatsTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.class1SeatsTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.class1SeatsTextBox.Name = "class1SeatsTextBox";
             this.class1SeatsTextBox.Size = new System.Drawing.Size(95, 20);
             this.class1SeatsTextBox.TabIndex = 5;
@@ -101,7 +101,7 @@
             // class2SeatsTextBox
             // 
             this.class2SeatsTextBox.Location = new System.Drawing.Point(11, 182);
-            this.class2SeatsTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.class2SeatsTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.class2SeatsTextBox.Name = "class2SeatsTextBox";
             this.class2SeatsTextBox.Size = new System.Drawing.Size(92, 20);
             this.class2SeatsTextBox.TabIndex = 7;
@@ -120,7 +120,7 @@
             // class3SeatsTextBox
             // 
             this.class3SeatsTextBox.Location = new System.Drawing.Point(11, 228);
-            this.class3SeatsTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.class3SeatsTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.class3SeatsTextBox.Name = "class3SeatsTextBox";
             this.class3SeatsTextBox.Size = new System.Drawing.Size(92, 20);
             this.class3SeatsTextBox.TabIndex = 9;
@@ -139,7 +139,7 @@
             // class1PriceTextBox
             // 
             this.class1PriceTextBox.Location = new System.Drawing.Point(115, 138);
-            this.class1PriceTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.class1PriceTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.class1PriceTextBox.Name = "class1PriceTextBox";
             this.class1PriceTextBox.Size = new System.Drawing.Size(83, 20);
             this.class1PriceTextBox.TabIndex = 11;
@@ -151,14 +151,14 @@
             this.class1PriceLabel.Location = new System.Drawing.Point(115, 120);
             this.class1PriceLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.class1PriceLabel.Name = "class1PriceLabel";
-            this.class1PriceLabel.Size = new System.Drawing.Size(86, 16);
+            this.class1PriceLabel.Size = new System.Drawing.Size(77, 16);
             this.class1PriceLabel.TabIndex = 10;
-            this.class1PriceLabel.Text = "Clasa 1 locuri:";
+            this.class1PriceLabel.Text = "Clasa 1 preț:";
             // 
             // class2PriceTextBox
             // 
             this.class2PriceTextBox.Location = new System.Drawing.Point(115, 182);
-            this.class2PriceTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.class2PriceTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.class2PriceTextBox.Name = "class2PriceTextBox";
             this.class2PriceTextBox.Size = new System.Drawing.Size(83, 20);
             this.class2PriceTextBox.TabIndex = 13;
@@ -170,9 +170,9 @@
             this.label5.Location = new System.Drawing.Point(112, 164);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(89, 16);
+            this.label5.Size = new System.Drawing.Size(80, 16);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Clasa 2 locuri:";
+            this.label5.Text = "Clasa 2 preț:";
             // 
             // label1
             // 
@@ -181,14 +181,14 @@
             this.label1.Location = new System.Drawing.Point(112, 210);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 16);
+            this.label1.Size = new System.Drawing.Size(80, 16);
             this.label1.TabIndex = 14;
-            this.label1.Text = "Clasa 3 locuri:";
+            this.label1.Text = "Clasa 3 preț:";
             // 
             // class3PriceTextBox
             // 
             this.class3PriceTextBox.Location = new System.Drawing.Point(115, 228);
-            this.class3PriceTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.class3PriceTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.class3PriceTextBox.Name = "class3PriceTextBox";
             this.class3PriceTextBox.Size = new System.Drawing.Size(83, 20);
             this.class3PriceTextBox.TabIndex = 15;
@@ -198,7 +198,7 @@
             this.addRace.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.addRace.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold);
             this.addRace.Location = new System.Drawing.Point(11, 260);
-            this.addRace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addRace.Margin = new System.Windows.Forms.Padding(2);
             this.addRace.Name = "addRace";
             this.addRace.Size = new System.Drawing.Size(125, 29);
             this.addRace.TabIndex = 16;
@@ -209,7 +209,7 @@
             // updateRace
             // 
             this.updateRace.Location = new System.Drawing.Point(11, 260);
-            this.updateRace.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.updateRace.Margin = new System.Windows.Forms.Padding(2);
             this.updateRace.Name = "updateRace";
             this.updateRace.Size = new System.Drawing.Size(125, 29);
             this.updateRace.TabIndex = 17;
@@ -241,7 +241,7 @@
             this.Controls.Add(this.racesDataGridView);
             this.Controls.Add(this.updateRace);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Races";
             this.Text = "Curse";
             this.Load += new System.EventHandler(this.Races_Load);
