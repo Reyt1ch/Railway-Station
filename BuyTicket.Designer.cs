@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuyTicket));
             this.availableSeatsDataGridView = new System.Windows.Forms.DataGridView();
             this.buy1Class = new System.Windows.Forms.Button();
             this.buy2Class = new System.Windows.Forms.Button();
@@ -41,7 +42,7 @@
             // 
             this.availableSeatsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.availableSeatsDataGridView.Location = new System.Drawing.Point(9, 10);
-            this.availableSeatsDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.availableSeatsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.availableSeatsDataGridView.Name = "availableSeatsDataGridView";
             this.availableSeatsDataGridView.RowHeadersWidth = 51;
             this.availableSeatsDataGridView.RowTemplate.Height = 24;
@@ -54,7 +55,7 @@
             this.buy1Class.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.buy1Class.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold);
             this.buy1Class.Location = new System.Drawing.Point(22, 137);
-            this.buy1Class.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buy1Class.Margin = new System.Windows.Forms.Padding(2);
             this.buy1Class.Name = "buy1Class";
             this.buy1Class.Size = new System.Drawing.Size(87, 33);
             this.buy1Class.TabIndex = 1;
@@ -67,7 +68,7 @@
             this.buy2Class.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.buy2Class.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold);
             this.buy2Class.Location = new System.Drawing.Point(171, 137);
-            this.buy2Class.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buy2Class.Margin = new System.Windows.Forms.Padding(2);
             this.buy2Class.Name = "buy2Class";
             this.buy2Class.Size = new System.Drawing.Size(87, 33);
             this.buy2Class.TabIndex = 2;
@@ -80,7 +81,7 @@
             this.buy3Class.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.buy3Class.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold);
             this.buy3Class.Location = new System.Drawing.Point(326, 137);
-            this.buy3Class.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buy3Class.Margin = new System.Windows.Forms.Padding(2);
             this.buy3Class.Name = "buy3Class";
             this.buy3Class.Size = new System.Drawing.Size(87, 33);
             this.buy3Class.TabIndex = 3;
@@ -92,7 +93,7 @@
             // 
             this.ticketsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ticketsDataGridView.Location = new System.Drawing.Point(9, 193);
-            this.ticketsDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ticketsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.ticketsDataGridView.Name = "ticketsDataGridView";
             this.ticketsDataGridView.RowHeadersWidth = 51;
             this.ticketsDataGridView.RowTemplate.Height = 24;
@@ -111,9 +112,10 @@
             this.Controls.Add(this.buy2Class);
             this.Controls.Add(this.buy1Class);
             this.Controls.Add(this.availableSeatsDataGridView);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "BuyTicket";
-            this.Text = "BuyTicket";
+            this.Text = "Vânzarea Bilete";
             this.Load += new System.EventHandler(this.BuyTicket_Load);
             ((System.ComponentModel.ISupportInitialize)(this.availableSeatsDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ticketsDataGridView)).EndInit();

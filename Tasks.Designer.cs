@@ -33,6 +33,7 @@
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource3 = new Microsoft.Reporting.WinForms.ReportDataSource();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource4 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Tasks));
             this.task5viewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tasksDataSet = new RailwayStation.TasksDataSet();
             this.task6viewBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -102,7 +103,7 @@
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource4);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "RailwayStation.Report.Tasks.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(10, 78);
-            this.reportViewer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.reportViewer1.Margin = new System.Windows.Forms.Padding(2);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(637, 316);
@@ -265,9 +266,10 @@
             this.Controls.Add(this.task7ToolStrip);
             this.Controls.Add(this.searchToolStrip);
             this.Controls.Add(this.reportViewer1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Tasks";
-            this.Text = "Tasks";
+            this.Text = "Raport";
             this.Load += new System.EventHandler(this.Tasks_Load);
             ((System.ComponentModel.ISupportInitialize)(this.task5viewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tasksDataSet)).EndInit();

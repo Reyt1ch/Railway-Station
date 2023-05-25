@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Destinations));
             this.destinationsDataGridView = new System.Windows.Forms.DataGridView();
             this.addDestination = new System.Windows.Forms.Button();
             this.nameTextBox = new System.Windows.Forms.TextBox();
@@ -40,7 +41,7 @@
             // 
             this.destinationsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.destinationsDataGridView.Location = new System.Drawing.Point(235, 10);
-            this.destinationsDataGridView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.destinationsDataGridView.Margin = new System.Windows.Forms.Padding(2);
             this.destinationsDataGridView.Name = "destinationsDataGridView";
             this.destinationsDataGridView.RowHeadersWidth = 51;
             this.destinationsDataGridView.RowTemplate.Height = 24;
@@ -50,7 +51,7 @@
             // addDestination
             // 
             this.addDestination.Location = new System.Drawing.Point(99, 96);
-            this.addDestination.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addDestination.Margin = new System.Windows.Forms.Padding(2);
             this.addDestination.Name = "addDestination";
             this.addDestination.Size = new System.Drawing.Size(112, 25);
             this.addDestination.TabIndex = 1;
@@ -61,7 +62,7 @@
             // nameTextBox
             // 
             this.nameTextBox.Location = new System.Drawing.Point(22, 73);
-            this.nameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.nameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.nameTextBox.Name = "nameTextBox";
             this.nameTextBox.Size = new System.Drawing.Size(190, 20);
             this.nameTextBox.TabIndex = 2;
@@ -82,7 +83,7 @@
             this.updateDestination.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.updateDestination.Font = new System.Drawing.Font("Bahnschrift", 9.75F, System.Drawing.FontStyle.Bold);
             this.updateDestination.Location = new System.Drawing.Point(99, 96);
-            this.updateDestination.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.updateDestination.Margin = new System.Windows.Forms.Padding(2);
             this.updateDestination.Name = "updateDestination";
             this.updateDestination.Size = new System.Drawing.Size(113, 34);
             this.updateDestination.TabIndex = 4;
@@ -102,7 +103,8 @@
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.addDestination);
             this.Controls.Add(this.destinationsDataGridView);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Destinations";
             this.Text = "Destinații";
             this.Load += new System.EventHandler(this.Destinations_Load);
