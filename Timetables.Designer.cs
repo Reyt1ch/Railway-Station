@@ -252,7 +252,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Timetables";
-            this.Text = " ";
+            this.Text = " Orar";
             this.Load += new System.EventHandler(this.Timetables_Load);
             ((System.ComponentModel.ISupportInitialize)(this.timetablesDataGridView)).EndInit();
             this.ResumeLayout(false);
